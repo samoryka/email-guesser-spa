@@ -1,5 +1,8 @@
 import React, {FormEvent, useState} from 'react';
 import {deriveEmail} from "./queries/deriveEmail";
+import {TextInput} from "./components/TextInput";
+import {SubmitButton} from "./components/SubmitButton";
+import {ResponseCard} from "./components/ResponseCard";
 
 interface EmailResponse {
     email: string
@@ -23,15 +26,15 @@ export const App = () => {
         setIsLoading(false)
     }
 
-    return (<form onSubmit={handleSubmit}>
-            <label htmlFor={"full_name"}> Full name</label>
-            <input id={"full_name"} value={fullName} onChange={(event) => setFullName(event.target.value)}/>
-            <label htmlFor={"company_domain"}>Company domain</label>
-            <input id={"company_domain"} value={companyDomain}
-                   onChange={(event) => setCompanyDomain(event.target.value)}/>
-            <input type="submit" disabled={isLoading}/>
-            {(emailResponse?.email || emailResponse?.error) &&
-                <span>{emailResponse.email || emailResponse.error}</span>}
+    return (
+        <form onSubmit={handleSubmit}>
+            <TextInput id={"full_name"} label={"Full Name"} value={fullName} disabled={isLoading}
+                       setValue={setFullName}/>
+            <TextInput id={"company_domain"} label={"Company Domain"} value={companyDomain} disabled={isLoading}
+                       setValue={setCompanyDomain}/>
+            <SubmitButton disabled={isLoading}/>
+            {emailResponse?.email && <ResponseCard text={emailResponse.email} isError={false}/>}
+            {emailResponse?.error && <ResponseCard text={emailResponse.error} isError={true}/>}
         </form>
     )
 }
