@@ -1,6 +1,6 @@
 export interface EmailResponse {
     email: string
-    error: string
+    error: "unknownDomain" | "incorrectFullName" | string
 }
 
 export const deriveEmail = (fullName: string, companyDomain: string) => {

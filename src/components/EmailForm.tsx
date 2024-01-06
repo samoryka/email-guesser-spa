@@ -24,7 +24,7 @@ export const EmailForm = ({setEmailResponse}: EmailFormProps) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={"flex-col w-full max-w-xs mb-4"}>
+        <form onSubmit={handleSubmit} className={"flex-col mb-4"}>
             <TextInput id={"full_name"} label={"Full Name"} value={fullName} placeholder={"Samory Ka"} disabled={isLoading}
                        setValue={setFullName}/>
             <TextInput id={"company_domain"} label={"Company Domain"} value={companyDomain} placeholder={"babbel.com"} disabled={isLoading}
