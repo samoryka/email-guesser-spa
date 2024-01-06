@@ -14,7 +14,7 @@ export const App = () => {
     return (
         <>
             <Header/>
-            <main>
+            <main className={"p-4"}>
                 <EmailForm setEmailResponse={setEmailResponse}/>
                 {emailResponse?.email && <ResponseCard text={emailResponse.email} isError={false}/>}
                 {emailResponse?.error && <ResponseCard text={emailResponse.error} isError={true}/>}

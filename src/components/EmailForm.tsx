@@ -23,11 +23,13 @@ export const EmailForm = ({setEmailResponse}: EmailFormProps) => {
         setIsLoading(false)
     }
 
-    return (<form onSubmit={handleSubmit}>
-        <TextInput id={"full_name"} label={"Full Name"} value={fullName} disabled={isLoading}
-                   setValue={setFullName}/>
-        <TextInput id={"company_domain"} label={"Company Domain"} value={companyDomain} disabled={isLoading}
-                   setValue={setCompanyDomain}/>
-        <SubmitButton disabled={isLoading}/>
-    </form>)
+    return (
+        <form onSubmit={handleSubmit} className={"flex-col w-full max-w-xs mb-4"}>
+            <TextInput id={"full_name"} label={"Full Name"} value={fullName} placeholder={"Samory Ka"} disabled={isLoading}
+                       setValue={setFullName}/>
+            <TextInput id={"company_domain"} label={"Company Domain"} value={companyDomain} placeholder={"babbel.com"} disabled={isLoading}
+                       setValue={setCompanyDomain}/>
+            <div className={"flex justify-end"}><SubmitButton disabled={isLoading}/></div>
+        </form>
+    )
 }
